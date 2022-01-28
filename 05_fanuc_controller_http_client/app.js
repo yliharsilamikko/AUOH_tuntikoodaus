@@ -3,7 +3,7 @@ const express = require('express');
 const PORT = process.env.PORT || 8081;
 let app = express();
 
-
+//muutos
 app.get("/robot/joint_values/", (req, res, next) => {
   axios
     .get("https://fanuc-robot-http-server.herokuapp.com/")
