@@ -6,6 +6,22 @@ const axios = require("axios");
 
 const PORT = process.env.PORT || 3000;
 
+let connections = [];
+io.on("connection", (socket)=>{
+    connections[socket.id] = socket;
+    console.log("connected");
+    socket.on("disconnect", (socket)=>{
+        delete connections[socket.id];
+    });
+});
+
+const broadcast_joint_values = (joint_values)=>{
+    for(let id in connections){
+        const connection = connections[id];
+        connection.emit("joint_values", joint_values);
+    }
+};
+
 const get_joint_values = () => {
   return axios
     .get("https://fanuc-robot-http-server.herokuapp.com/")
@@ -26,14 +42,11 @@ const get_joint_values = () => {
 
 const main_loop = () => {
   get_joint_values().then((joint_values) => {
-    console.log(joint_values);
+    broadcast_joint_values(joint_values);
     main_loop();
   });
 };
 
 main_loop();
-
-
-
 server.listen(PORT);
 console.log("Listening port: " + PORT);
