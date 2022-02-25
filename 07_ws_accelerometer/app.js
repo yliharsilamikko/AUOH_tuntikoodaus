@@ -26,8 +26,6 @@ const smooth_data = (data)=>{
     return current_data;
 };
 
-
-
 io.on("connection", (socket)=>{
     connections[socket.id] = socket;
     console.log("connected");

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Websocket example</title>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+    <script src="client.js"></script>
+
+</head>
+
+<body>
+    <input type="text" id="nickname_input">
+    <button onclick="set_nickname()">Set nickname</button>
+
+    <input type="text" id="message_input">
+    <button onclick="send_message()">Send</button>
+
+    <p id="nickname"></p>
+    <p id="messages"></p>
+    <p id="n_clients"></p>
+</body>
+
+</html>
