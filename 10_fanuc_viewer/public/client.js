@@ -59,6 +59,14 @@ let default_material = new THREE.MeshPhongMaterial({
     color: 0x0000ff
 });
 
+let dark_material = new THREE.MeshPhongMaterial({
+    color: 0x555555
+});
+
+let yellow_material = new THREE.MeshPhongMaterial({
+    color: 0xffff00
+});
+
 const stl_loader = new STLLoader();
 const load_stl = (url)=>{
     return new Promise((resolve)=>{
@@ -74,32 +82,34 @@ const load_geometries = async ()=>{
     {
         let geometry = await load_stl("./FANUC_R2000iA165F-STL/BASE.stl");
         geometry.scale(0.001, 0.001, 0.001);
-        joints.push(new THREE.Mesh(geometry, default_material));
+        joints.push(new THREE.Mesh(geometry, dark_material));
     }
     {
         let geometry = await load_stl("./FANUC_R2000iA165F-STL/J1-1.stl");
+        let geometry2 = await load_stl("./FANUC_R2000iA165F-STL/J1-2.stl");
+        geometry.merge(geometry2);
         geometry.scale(0.001, 0.001, 0.001);
-        joints.push(new THREE.Mesh(geometry, default_material));
+        joints.push(new THREE.Mesh(geometry, yellow_material));
     }
     {
         let geometry = await load_stl("./FANUC_R2000iA165F-STL/J2.stl");
         geometry.scale(0.001, 0.001, 0.001);
-        joints.push(new THREE.Mesh(geometry, default_material));
+        joints.push(new THREE.Mesh(geometry, yellow_material));
     }
     {
         let geometry = await load_stl("./FANUC_R2000iA165F-STL/J3.stl");
         geometry.scale(0.001, 0.001, 0.001);
-        joints.push(new THREE.Mesh(geometry, default_material));
+        joints.push(new THREE.Mesh(geometry, yellow_material));
     }
     {
         let geometry = await load_stl("./FANUC_R2000iA165F-STL/J4.stl");
         geometry.scale(0.001, 0.001, 0.001);
-        joints.push(new THREE.Mesh(geometry, default_material));
+        joints.push(new THREE.Mesh(geometry, yellow_material));
     }
     {
         let geometry = await load_stl("./FANUC_R2000iA165F-STL/J5.stl");
         geometry.scale(0.001, 0.001, 0.001);
-        joints.push(new THREE.Mesh(geometry, default_material));
+        joints.push(new THREE.Mesh(geometry, yellow_material));
     }
 };
 
