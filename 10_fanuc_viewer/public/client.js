@@ -130,18 +130,28 @@ load_geometries().then(()=>{
     offsets[0].add(joints[1]);
     
     offsets.push(new THREE.Group());
-    offsets[1].position.set(-0.312, (-0.282)-(-0.670),0.117);
-    joints[0].add(offsets[0]);
-    offsets[0].add(joints[1]);
-    
-    offsets.push(new THREE.Group());
-    offsets[2].position.set(-0.312, (-0.282)-(-0.670),0.117);
+    offsets[1].position.set(0.312, 0.670-0.282,-0.117);
     joints[1].add(offsets[1]);
     offsets[1].add(joints[2]);
+    
+    offsets.push(new THREE.Group());
+    offsets[2].position.set(0.26869-0.312, 1.74413-0.670, (-0.19685)-(-0.117));
+    joints[2].add(offsets[2]);
+    offsets[2].add(joints[3]);
+
+    offsets.push(new THREE.Group());
+    offsets[3].position.set(1.31519-0.26869, 1.96913-1.74413, 0.00015-(-0.19685));
+    joints[3].add(offsets[3]);
+    offsets[3].add(joints[4]);
+
+    offsets.push(new THREE.Group());
+    offsets[4].position.set(1.54869-1.31519, 0, 0.08715-0.00015);
+    joints[4].add(offsets[4]);
+    offsets[4].add(joints[5]);
 
 
-    joints[1].rotation.set(0,THREE.Math.degToRad(90),0);
-
+    //joints[2].rotation.set(0,0,THREE.Math.degToRad(45));
+    //joints[4].rotation.set(0,0,THREE.Math.degToRad(45));
 
     // Math.degToRad
     
