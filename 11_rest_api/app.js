@@ -12,9 +12,15 @@ app.use(body_parser.json());
 
 app.post("/api/alarm", alarm_controller.api_post_alarm);
 
+const db_uri = "mongodb+srv://db_user:HxK0dIDDkci6Y7la@cluster0.ganue.mongodb.net/alarm_db?retryWrites=true&w=majority";
+
+mongoose.connect(db_uri, {}).then(() => {
+  console.log("db connected");
+  console.log("listening port: ", PORT);
+  app.listen(PORT);
+});
 
 
-app.listen(PORT);
 
 
 
